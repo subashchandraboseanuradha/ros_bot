@@ -8,6 +8,7 @@
   <license>TODO: License declaration</license>
 
   <depend>xacro</depend>
+  <depend>aws_robomaker_small_warehouse_world</depend>
   <depend>rviz2</depend>
   <depend>robot_state_publisher</depend>
   <depend>joint_state_publisher</depend>

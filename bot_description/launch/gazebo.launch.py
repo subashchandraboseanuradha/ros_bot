@@ -10,10 +10,13 @@ def generate_launch_description():
 
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     pkg_bot_description = get_package_share_directory('bot_description')
+    pkg_warehouse = get_package_share_directory('aws_robomaker_small_warehouse_world')
 
     robot_description_file = os.path.join(pkg_bot_description, 'urdf', 'bot.xacro')
     robot_description_config = xacro.process_file(robot_description_file)
     robot_description = {'robot_description': robot_description_config.toxml()}
+
+    world_file = os.path.join(pkg_warehouse, 'worlds', 'small_warehouse', 'small_warehouse.world')
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -27,7 +30,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py')
         ),
-        launch_arguments={'world': ''}.items()
+        launch_arguments={'world': world_file}.items()
     )
 
     spawn_robot = TimerAction(
