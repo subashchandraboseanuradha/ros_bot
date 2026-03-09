@@ -13,29 +13,29 @@
 
 <gazebo reference="right_wheel_link_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
   <self_collide>true</self_collide>
 </gazebo>
 
 <gazebo reference="left_wheel_link_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
   <self_collide>true</self_collide>
 </gazebo>
 
 <gazebo reference="caster_wheel_b_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.01</mu1>
+  <mu2>0.01</mu2>
   <self_collide>true</self_collide>
 </gazebo>
 
 <gazebo reference="caster_wheel_a_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>0.01</mu1>
+  <mu2>0.01</mu2>
   <self_collide>true</self_collide>
 </gazebo>
 
@@ -51,6 +51,13 @@
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo>
+  <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+    <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
+    <parameters>$(find bot_description)/config/controllers.yaml</parameters>
+  </plugin>
 </gazebo>
 
 </robot>
