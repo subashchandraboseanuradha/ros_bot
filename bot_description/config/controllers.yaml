@@ -1,6 +1,7 @@
 controller_manager:
   ros__parameters:
     update_rate: 100
+    use_sim_time: true
 
     diff_cont:
       type: diff_drive_controller/DiffDriveController
@@ -22,7 +23,7 @@ diff_cont:
 
     publish_rate: 50.0
     odom_frame_id: odom
-    base_frame_id: base_link
+    base_frame_id: base_footprint
     pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
     twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
 
@@ -31,3 +32,15 @@ diff_cont:
 
     cmd_vel_timeout: 0.5
     use_stamped_vel: false
+
+    linear.x.has_velocity_limits: true
+    linear.x.has_acceleration_limits: true
+    linear.x.max_velocity: 0.5
+    linear.x.min_velocity: -0.5
+    linear.x.max_acceleration: 1.0
+
+    angular.z.has_velocity_limits: true
+    angular.z.has_acceleration_limits: true
+    angular.z.max_velocity: 1.0
+    angular.z.min_velocity: -1.0
+    angular.z.max_acceleration: 2.0
